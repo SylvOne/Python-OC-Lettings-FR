@@ -8,10 +8,14 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: pip install -r requirements.txt
+          command: |
+            pip install -r requirements.txt
       - run:
-          name: Run Tests
-          command: pytest
+          name: Run flake8 for PEP8 compliance
+          command: flake8
+      - run:
+          name: Run Tests for all modules
+          command: pytest profiles/tests_profiles lettings/tests_lettings --cov=profiles --cov=lettings --cov-fail-under=80
 
 workflows:
   version: 2
