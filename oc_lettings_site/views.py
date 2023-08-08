@@ -4,7 +4,9 @@ la page d'erreur 404 (non trouvée), et la page d'erreur 500 (erreur interne du 
 """
 
 from django.shortcuts import render
+import logging
 
+logger = logging.getLogger(__name__)
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 # Quisque molestie quam lobortis leo consectetur ullamcorper non id est.
@@ -14,6 +16,7 @@ from django.shortcuts import render
 # Aliquam vitae erat ac orci placerat luctus.
 # Nullam elementum urna nisi, pellentesque iaculis enim cursus in.
 # Praesent volutpat porttitor magna, non finibus neque cursus id.
+
 
 def index(request):
     """
@@ -26,6 +29,7 @@ def custom_page_not_found_view(request, exception=None):
     """
     Vue personnalisée pour gérer les erreurs 404 (Page non trouvée).
     """
+    logger.error(f'Page not found: {request.path}')
     return render(request, '404.html', status=404)
 
 
@@ -33,4 +37,5 @@ def custom_internal_server_error_view(request):
     """
     Vue personnalisée pour gérer les erreurs 500 (Erreur interne du serveur).
     """
+    logger.error('Internal server error occurred.')
     return render(request, '500.html', status=500)

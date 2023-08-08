@@ -30,3 +30,10 @@ def test_profile_view(client):
     Profile.objects.create(user=user, favorite_city='Paris')
     response = client.get(reverse('profile', args=['john_doe']))
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_profile_view_not_found(client):
+    """Teste la vue pour le détail d'un profil pour un ID non existant."""
+    response = client.get(reverse('profile', args=['non_existent_user']))
+    assert response.status_code == 404

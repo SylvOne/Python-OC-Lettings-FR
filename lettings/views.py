@@ -10,12 +10,17 @@ Fonctions:
 
 from django.shortcuts import render
 from .models import Letting
+from django.http import Http404
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 # Aenean leo magna, vestibulum et tincidunt fermentum, consectetur quis velit.
 # Sed non placerat massa. Integer est nunc, pulvinar a tempor et,
 # bibendum id arcu. Vestibulum ante ipsum primis in faucibus orci luctus et
 # ultrices posuere cubilia curae; Cras eget scelerisque
+
 
 def index(request):
     """
@@ -27,9 +32,12 @@ def index(request):
     Returns:
         HttpResponse: Une réponse contenant le rendu de la liste des locations.
     """
-    lettings_list = Letting.objects.all()
-    context = {'lettings_list': lettings_list}
-    return render(request, 'lettings/index.html', context)
+    try:
+        lettings_list = Letting.objects.all()
+        context = {'lettings_list': lettings_list}
+        return render(request, 'lettings/index.html', context)
+    except Exception as e:
+        logger.error(f"An error occurred while retrieving the lettings: {str(e)}")
 
 
 # Cras ultricies dignissim purus, vitae hendrerit ex varius non.
@@ -57,9 +65,13 @@ def letting(request, letting_id):
     Returns:
         HttpResponse: Une réponse contenant le rendu des détails de la location.
     """
-    letting = Letting.objects.get(id=letting_id)
-    context = {
-        'title': letting.title,
-        'address': letting.address,
-    }
-    return render(request, 'lettings/letting.html', context)
+    try:
+        letting = Letting.objects.get(id=letting_id)
+        context = {
+            'title': letting.title,
+            'address': letting.address,
+        }
+        return render(request, 'lettings/letting.html', context)
+    except Letting.DoesNotExist:
+        logger.error(f"Letting with ID {letting_id} not found.")
+        raise Http404("Profile not found.")

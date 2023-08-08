@@ -52,6 +52,19 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `pytest`
+- `pystest --cov`
+
+##### Tests lettings app
+
+- `cd /path/to/Python-OC-Lettings-FR`
+- `source venv/bin/activate`
+- `pytest lettings/tests_lettings --cov=lettings`
+
+##### Tests profiles app
+
+- `cd /path/to/Python-OC-Lettings-FR`
+- `source venv/bin/activate`
+- `pytest profiles/tests_profiles --cov=profiles`
 
 #### Base de données
 

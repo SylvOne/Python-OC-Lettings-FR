@@ -5,6 +5,11 @@ y compris la vue pour lister tous les profils et la vue pour afficher un profil 
 
 from django.shortcuts import render
 from .models import Profile
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 # Sed placerat quam in pulvinar commodo. Nullam laoreet consectetur ex,
@@ -16,9 +21,12 @@ def index(request):
     """
     Vue pour lister tous les profils disponibles.
     """
-    profiles_list = Profile.objects.all()
-    context = {'profiles_list': profiles_list}
-    return render(request, 'profiles/index.html', context)
+    try:
+        profiles_list = Profile.objects.all()
+        context = {'profiles_list': profiles_list}
+        return render(request, 'profiles/index.html', context)
+    except Exception as e:
+        logger.error(f"An error occurred while retrieving the profiles: {str(e)}")
 
 
 # Aliquam sed metus eget nisi tincidunt ornare accumsan eget lac
@@ -31,6 +39,10 @@ def profile(request, username):
     """
     Vue pour afficher un profil spécifique basé sur le nom d'utilisateur.
     """
-    profile = Profile.objects.get(user__username=username)
-    context = {'profile': profile}
-    return render(request, 'profiles/profile.html', context)
+    try:
+        profile = Profile.objects.get(user__username=username)
+        context = {'profile': profile}
+        return render(request, 'profiles/profile.html', context)
+    except ObjectDoesNotExist:
+        logger.error(f"Profile for username {username} not found.")
+        raise Http404("Profile not found.")

@@ -29,3 +29,11 @@ def test_letting_view(client):
     letting = Letting.objects.create(title="Title Here", address=address)
     response = client.get(reverse('letting', args=[letting.id]))
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_letting_view_not_found(client):
+    """Teste la vue pour le détail d'un letting pour un ID non existant."""
+    non_existent_letting_id = 999999  # cet ID n'existe pas dans la bdd.
+    response = client.get(reverse('letting', args=[non_existent_letting_id]))
+    assert response.status_code == 404
