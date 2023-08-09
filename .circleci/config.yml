@@ -25,7 +25,15 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker image
-          command: docker build -t 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings .
+          command: |
+            docker build \
+              --build-arg SECRET_KEY=$SECRET_KEY \
+              --build-arg SENTRY_DSN=$SENTRY_DSN \
+              --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+              --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+              --build-arg DJANGO_DEBUG=$DJANGO_DEBUG \
+              -t 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings .
+
       - run:
           name: Push Docker image to ECR
           command: docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings
