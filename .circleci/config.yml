@@ -25,10 +25,10 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker image
-          command: docker build -t $ECR_REPO_URL .
+          command: docker build -t $ECR_REPO_URL/oc_lettings_site .
       - run:
           name: Push Docker image to ECR
-          command: docker push $ECR_REPO_URL
+          command: docker push $ECR_REPO_URL/oc_lettings_site
       - run:
           name: Sync static files to S3
           command: aws s3 sync static/ s3://$AWS_STORAGE_BUCKET_NAME/
