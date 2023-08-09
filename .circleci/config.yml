@@ -30,6 +30,12 @@ jobs:
           name: Push Docker image to ECR
           command: docker push 867318070779.dkr.ecr.eu-north-1.amazonaws.com/oc_lettings_site
       - run:
+          name: Configure AWS
+          command: |
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set default.region $AWS_REGION
+      - run:
           name: Sync static files to S3
           command: aws s3 sync static/ s3://oclettingsbucket/
 
