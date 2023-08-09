@@ -12,7 +12,7 @@ jobs:
             pip install -r requirements.txt
       - run:
           name: Install AWS CLI
-          command: sudo apt-get install -y awscli
+          command: pip install awscli
       - run:
           name: Run flake8 for PEP8 compliance
           command: flake8
