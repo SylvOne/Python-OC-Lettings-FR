@@ -7,6 +7,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Print Environment
+          command: |
+            echo $AWS_ACCESS_KEY_ID
+            echo $AWS_SECRET_ACCESS_KEY
+            echo $AWS_STORAGE_BUCKET_NAME
+            echo $ECR_REPO_URL
+            echo $SECRET_KEY
+            echo $SENTRY_DSN
+            
+
+      - run:
           name: Install Dependencies
           command: |
             pip install -r requirements.txt
