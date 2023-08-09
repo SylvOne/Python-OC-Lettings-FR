@@ -25,7 +25,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker image
-          command: docker build -t monimage .
+          command: docker build -t $ECR_REPO_URL .
       - run:
           name: Push Docker image to ECR
           command: docker push $ECR_REPO_URL
