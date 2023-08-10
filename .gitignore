@@ -2,3 +2,5 @@
 *.pyc
 venv
 .env
+Dockerrun.aws.json
+Dockerrun.aws.json.zip

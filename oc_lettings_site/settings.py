@@ -31,7 +31,11 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'oclettingsapp-env.eba-mnmnj23p.us-east-1.elasticbeanstalk.com'
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
