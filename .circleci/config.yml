@@ -52,7 +52,6 @@ jobs:
             aws elasticbeanstalk create-application-version --application-name $APP_AWS --version-label $CIRCLE_SHA1 --source-bundle S3Bucket=$S3_BUCKET_DOCKRUN,S3Key=$DOCKERRUN
             aws elasticbeanstalk update-environment --environment-name $APP_ENVIRONNEMENT_AWS --version-label $CIRCLE_SHA1
 
-
 workflows:
   version: 2
   build-and-test:
