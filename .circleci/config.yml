@@ -46,6 +46,12 @@ jobs:
       - run:
           name: Sync static files to S3
           command: aws s3 sync static/ s3://oclettingsbucket/
+      - run:
+          name: Deploy to Elastic Beanstalk
+          command: |
+            aws elasticbeanstalk create-application-version --application-name $APP_AWS --version-label $CIRCLE_SHA1 --source-bundle S3Bucket=$AWS_STORAGE_BUCKET_NAME,S3Key=$DOCKERRUN
+            aws elasticbeanstalk update-environment --environment-name $APP_ENVIRONNEMENT_AWS --version-label $CIRCLE_SHA1
+
 
 workflows:
   version: 2
