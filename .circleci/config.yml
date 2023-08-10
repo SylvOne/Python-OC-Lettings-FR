@@ -19,10 +19,6 @@ jobs:
       - run:
           name: Run Tests for all modules
           command: pytest profiles/tests_profiles lettings/tests_lettings --cov=profiles --cov=lettings --cov-fail-under=80
-          
-      - run:
-          name: Login to ECR
-          command: aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings
       - setup_remote_docker
       - run:
           name: Build Docker image
@@ -37,15 +33,27 @@ jobs:
       - run:
           name: Tag Docker image as latest
           command: docker tag 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:latest
-
       - run:
-          name: Push Docker image with specific tag to ECR
-          command: docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1
-
+          name: Login to ECR
+          command: aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings
       - run:
-          name: Push Docker image with latest tag to ECR
-          command: docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:latest
-
+          name: Push Docker image to ECR
+          command: |
+            docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1
+            docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:latest
+      - run:
+          name: Tag Docker image for Docker Hub
+          command: |
+            docker tag 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1 $DOCKERHUB_USERNAME/oc_lettings:$CIRCLE_SHA1
+            docker tag 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1 $DOCKERHUB_USERNAME/oc_lettings:latest
+      - run:
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run:
+          name: Push Docker image to Docker Hub
+          command: |
+            docker push $DOCKERHUB_USERNAME/oc_lettings:$CIRCLE_SHA1
+            docker push $DOCKERHUB_USERNAME/oc_lettings:latest
       - run:
           name: Configure AWS
           command: |
