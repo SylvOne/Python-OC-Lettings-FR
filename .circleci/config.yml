@@ -19,6 +19,7 @@ jobs:
       - run:
           name: Run Tests for all modules
           command: pytest profiles/tests_profiles lettings/tests_lettings --cov=profiles --cov=lettings --cov-fail-under=80
+          
       - run:
           name: Login to ECR
           command: aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings
@@ -26,17 +27,25 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build \
-              --build-arg SECRET_KEY=$SECRET_KEY \
-              --build-arg SENTRY_DSN=$SENTRY_DSN \
-              --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-              --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-              --build-arg DJANGO_DEBUG=$DJANGO_DEBUG \
-              -t 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings .
+              docker build \
+                --build-arg SECRET_KEY=$SECRET_KEY \
+                --build-arg SENTRY_DSN=$SENTRY_DSN \
+                --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+                --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+                --build-arg DJANGO_DEBUG=$DJANGO_DEBUG \
+                -t 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1 .
+      - run:
+          name: Tag Docker image as latest
+          command: docker tag 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:latest
 
       - run:
-          name: Push Docker image to ECR
-          command: docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings
+          name: Push Docker image with specific tag to ECR
+          command: docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:$CIRCLE_SHA1
+
+      - run:
+          name: Push Docker image with latest tag to ECR
+          command: docker push 867318070779.dkr.ecr.us-east-1.amazonaws.com/ecrlettings:latest
+
       - run:
           name: Configure AWS
           command: |
