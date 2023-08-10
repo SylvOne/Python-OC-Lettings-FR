@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            aws elasticbeanstalk create-application-version --application-name $APP_AWS --version-label $CIRCLE_SHA1 --source-bundle S3Bucket=$AWS_STORAGE_BUCKET_NAME,S3Key=$DOCKERRUN
+            aws elasticbeanstalk create-application-version --application-name $APP_AWS --version-label $CIRCLE_SHA1 --source-bundle S3Bucket=$S3_BUCKET_DOCKRUN,S3Key=$DOCKERRUN
             aws elasticbeanstalk update-environment --environment-name $APP_ENVIRONNEMENT_AWS --version-label $CIRCLE_SHA1
 
 
