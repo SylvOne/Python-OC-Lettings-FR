@@ -27,8 +27,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Install AWS CLI
-        command: pip install awscli
+          name: Install AWS CLI
+          command: pip install awscli
       - run:
           name: Build Docker image
           command: |
