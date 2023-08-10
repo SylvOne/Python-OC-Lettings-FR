@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build-and-test:
+  test-all-branches:
     docker:
       - image: circleci/python:3.9
     steps:
@@ -10,9 +10,6 @@ jobs:
           name: Install Dependencies
           command: |
             pip install -r requirements.txt
-      - run:
-          name: Install AWS CLI
-          command: pip install awscli
       - run:
           name: Run flake8 for PEP8 compliance
           command: flake8
@@ -80,18 +77,12 @@ jobs:
 
 workflows:
   version: 2
-  build-and-test-all-branches:
+  build-test-containerize-and-deploy:
     jobs:
-      - build-and-test
-  containerize-and-deploy-master:
-    jobs:
-      - build-and-test:
-          filters:
-            branches:
-              only: master
+      - test-all-branches
       - containerize-and-deploy:
           requires:
-            - build-and-test
+            - test-all-branches
           filters:
             branches:
               only: master
