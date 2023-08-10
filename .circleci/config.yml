@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: circleci/python:3.9
     steps:
@@ -19,6 +19,12 @@ jobs:
       - run:
           name: Run Tests for all modules
           command: pytest profiles/tests_profiles lettings/tests_lettings --cov=profiles --cov=lettings --cov-fail-under=80
+
+  containerize-and-deploy:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
       - setup_remote_docker
       - run:
           name: Build Docker image
@@ -71,6 +77,18 @@ jobs:
 
 workflows:
   version: 2
-  build-and-test:
+  build-and-test-all-branches:
     jobs:
-      - build
+      - build-and-test
+  containerize-and-deploy-master:
+    jobs:
+      - build-and-test:
+          filters:
+            branches:
+              only: master
+      - containerize-and-deploy:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
