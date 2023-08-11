@@ -88,3 +88,41 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### Déploiement
+
+#### Récapitulatif du fonctionnement du déploiement
+
+Le déploiement est effectué à l'aide d'un pipeline CI/CD, orchestré avec CircleCI, qui teste, conteneurise et déploie l'application sur AWS. Le pipeline inclut des étapes pour la vérification du style de code, l'exécution de tests unitaires, la construction d'images Docker, le push des images vers AWS ECR et Docker Hub, et le déploiement sur AWS Elastic Beanstalk.
+
+#### Configuration requise
+
+Assurez-vous que les variables d'environnement suivantes sont configurées dans CircleCI :
+
+- `SECRET_KEY`
+- `SENTRY_DSN`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `DJANGO_DEBUG`
+- `AWS_REGION`
+- `DOCKERHUB_USERNAME`
+- `DOCKERHUB_PASSWORD`
+- `APP_AWS`
+- `APP_ENVIRONNEMENT_AWS`
+- `S3_BUCKET_DOCKRUN`
+- `DOCKERRUN`
+
+#### Étapes nécessaires pour effectuer le déploiement
+
+<b>À noter</b> : 
+
+La phase de déploiement sera executée uniquement lors d'un "push" github vers la branche principale. Lors d'un push github sur une branche secondaire seul la phase de tests de conformité PEP8 et de tests unitaires sera executée.
+
+1. **Tests de toutes les branches**: Exécution de tests de conformité PEP8 et de tests unitaires.
+2. **Conteneurisation et déploiement**:
+   - Construction de l'image Docker avec les variables de build.
+   - Marquage et push de l'image vers AWS ECR et Docker Hub.
+   - Synchronisation des fichiers statiques avec S3.
+   - Déploiement de l'application sur Elastic Beanstalk.
+
+Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml). Aucune intervention manuelle n'est nécessaire si les configurations sont correctement définies.
