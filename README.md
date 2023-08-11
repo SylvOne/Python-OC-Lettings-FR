@@ -132,11 +132,8 @@ Ces étapes sont automatiquement gérées par le fichier de configuration Circle
 Pour exécuter l'image Docker de ce projet localement, vous pouvez utiliser le script `run_container.sh` fourni. Voici les étapes à suivre :
 
 #### Configuration des variables d'environnement
-Assurez-vous que le fichier `.env` contient les variables d'environnement correctes. Voici un exemple des variables nécessaires :
+Assurez-vous que le fichier `.env` contient les variables d'environnement correctes. Voici les variables nécessaires :
 ```
-DOCKERHUB_USERNAME=your-username
-DOCKERHUB_PASSWORD=your-password
-SECRET_KEY=your-secret-key
 SENTRY_DSN=your-sentry-dsn
 AWS_ACCESS_KEY_ID=your-access-key-id
 AWS_SECRET_ACCESS_KEY=your-secret-access-key

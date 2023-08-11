@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to OC Lettings’s documentation! &#8212; Documentation OC Lettings v1</title>
+    <title>Site web d’Orange County Lettings &#8212; Documentation OC Lettings v1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=3b809e37"></script>
@@ -30,18 +30,409 @@
 
           <div class="body" role="main">
             
-  <section id="welcome-to-oc-lettings-s-documentation">
-<h1>Welcome to OC Lettings’s documentation!<a class="headerlink" href="#welcome-to-oc-lettings-s-documentation" title="Lien permanent vers cette rubrique">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <section id="site-web-d-orange-county-lettings">
+<h1>Site web d’Orange County Lettings<a class="headerlink" href="#site-web-d-orange-county-lettings" title="Lien permanent vers cette rubrique">¶</a></h1>
+<section id="description-du-projet">
+<h2>1. Description du Projet<a class="headerlink" href="#description-du-projet" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Projet: Site web d’Orange County Lettings
+Le projet a pour but de créer une plateforme de location pour Orange County. Il utilise des technologies telles que Python, SQLite3, et Django, et suit les principes de développement CI/CD.</p>
+</section>
+<section id="instructions-sur-linstallation-du-projet">
+<h2>2. Instructions sur l’Installation du Projet<a class="headerlink" href="#instructions-sur-linstallation-du-projet" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Développement local :</p>
+<section id="prerequis">
+<h3>Prérequis<a class="headerlink" href="#prerequis" title="Lien permanent vers cette rubrique">¶</a></h3>
+<ul class="simple">
+<li><p>Compte GitHub avec accès en lecture à ce repository</p></li>
+<li><p>Git CLI</p></li>
+<li><p>SQLite3 CLI</p></li>
+<li><p>Interpréteur Python, version 3.6 ou supérieure</p></li>
+</ul>
+</section>
+<section id="macos-linux">
+<h3>macOS / Linux<a class="headerlink" href="#macos-linux" title="Lien permanent vers cette rubrique">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Cloner le repository:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/put/project/in
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SylvOne/Python-OC-Lettings-FR.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Créer l’environnement virtuel:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/Python-OC-Lettings-FR
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+apt-get<span class="w"> </span>install<span class="w"> </span>python3-venv<span class="w"> </span><span class="o">(</span>Si<span class="w"> </span>l<span class="s1">&#39;étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)</span>
+<span class="s1">Activer l&#39;</span>environnement<span class="w"> </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+Confirmer<span class="w"> </span>que<span class="w"> </span>la<span class="w"> </span>commande<span class="w"> </span>python<span class="w"> </span>exécute<span class="w"> </span>l<span class="s1">&#39;interpréteur Python dans l&#39;</span>environnement<span class="w"> </span>virtuel<span class="w"> </span>which<span class="w"> </span>python
+Confirmer<span class="w"> </span>que<span class="w"> </span>la<span class="w"> </span>version<span class="w"> </span>de<span class="w"> </span>l<span class="s1">&#39;interpréteur Python est la version 3.6 ou supérieure python --version</span>
+<span class="s1">Confirmer que la commande pip exécute l&#39;</span>exécutable<span class="w"> </span>pip<span class="w"> </span>dans<span class="w"> </span>l<span class="s1">&#39;environnement virtuel, which pip</span>
+<span class="s1">Pour désactiver l&#39;</span>environnement,<span class="w"> </span>deactivate
+</pre></div>
 </div>
 </section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Lien permanent vers cette rubrique">¶</a></h1>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Utilisation de PowerShell, comme ci-dessus sauf :</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Index du module</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Page de recherche</span></a></p></li>
+<li><p>Pour activer l’environnement virtuel, .venvScriptsActivate.ps1</p></li>
+<li><p>Remplacer which &lt;my-command&gt; par (Get-Command &lt;my-command&gt;).Path</p></li>
 </ul>
+</section>
+</section>
+<section id="guide-de-demarrage-rapide-instructions-pour-le-deploiement">
+<h2>3. Guide de Démarrage Rapide (Instructions pour le déploiement)<a class="headerlink" href="#guide-de-demarrage-rapide-instructions-pour-le-deploiement" title="Lien permanent vers cette rubrique">¶</a></h2>
+<ul class="simple">
+<li><p>Après avoir cloné le projet, suivez les instructions d’installation.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/Python-OC-Lettings-FR
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>--requirement<span class="w"> </span>requirements.txt
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Naviguez sur <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> dans un navigateur.</p></li>
+<li><p>Vérifiez que le site fonctionne et qu’il est possible de naviguer (vous devriez voir plusieurs profils et locations).</p></li>
+<li><p>Aller sur le pannel d’administration <a class="reference external" href="http://localhost:8000/admin">http://localhost:8000/admin</a> et connectez-vous avec l’utilisateur « admin » , mot de passe Abc1234!</p></li>
+</ul>
+</section>
+<section id="technologies-et-langages-de-programmation-utilises">
+<h2>4. Technologies et Langages de Programmation Utilisés<a class="headerlink" href="#technologies-et-langages-de-programmation-utilises" title="Lien permanent vers cette rubrique">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Langages de Programmation:</strong> Python (3.9)</p></li>
+<li><p><strong>Framework:</strong> Django</p></li>
+<li><p><strong>Base de Données:</strong> SQLite3</p></li>
+<li><p><strong>Outils de CI/CD:</strong> CircleCI, AWS, GitHub</p></li>
+<li><p><strong>Outils de containerisation:</strong> Docker</p></li>
+<li><p><strong>Outils de linting:</strong> Flake8</p></li>
+<li><p><strong>Outils de tests:</strong> Pytest</p></li>
+</ul>
+</section>
+<section id="structure-de-la-base-de-donnees-et-des-modeles-de-donnees">
+<h2>5. Structure de la Base de Données et des Modèles de Données<a class="headerlink" href="#structure-de-la-base-de-donnees-et-des-modeles-de-donnees" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>La structure de la base de données pour le projet Django en question se compose de 2 applications : <cite>profiles</cite> et <cite>lettings</cite>.</p>
+<section id="application-lettings">
+<h3>Application Lettings<a class="headerlink" href="#application-lettings" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Cette application gère les locations et les adresses.</p>
+<dl class="simple">
+<dt><strong>Modèle Address:</strong></dt><dd><p>La table <cite>Address</cite> stocke les adresses postales.</p>
+<ul class="simple">
+<li><p><cite>number</cite>: Un champ entier positif pour le numéro de l’adresse, limité à 9999.</p></li>
+<li><p><cite>street</cite>: Un champ de caractères pour le nom de la rue, limité à 64 caractères.</p></li>
+<li><p><cite>city</cite>: Un champ de caractères pour la ville, limité à 64 caractères.</p></li>
+<li><p><cite>state</cite>: Un champ de caractères pour l’état, exactement 2 caractères.</p></li>
+<li><p><cite>zip_code</cite>: Un champ entier positif pour le code postal, limité à 99999.</p></li>
+<li><p><cite>country_iso_code</cite>: Un champ de caractères pour le code ISO du pays, exactement 3 caractères.</p></li>
+</ul>
+</dd>
+<dt><strong>Modèle Letting:</strong></dt><dd><p>La table <cite>Letting</cite> représente les locations.</p>
+<ul class="simple">
+<li><p><cite>title</cite>: Un champ de caractères pour le titre de la location, limité à 256 caractères.</p></li>
+<li><p><cite>address</cite>: Une relation OneToOne avec la table <cite>Address</cite>, liant chaque location à une adresse.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="application-profiles">
+<h3>Application Profiles<a class="headerlink" href="#application-profiles" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Cette application gère les profils utilisateurs.</p>
+<dl class="simple">
+<dt><strong>Modèle Profile:</strong></dt><dd><p>La table <cite>Profile</cite> est liée aux utilisateurs.</p>
+<ul class="simple">
+<li><p><cite>user</cite>: Une relation OneToOne avec la table <cite>User</cite> de Django, liant chaque profil à un utilisateur.</p></li>
+<li><p><cite>favorite_city</cite>: Un champ de caractères pour la ville favorite de l’utilisateur, limité à 64 caractères et pouvant être vide.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="relation-entre-les-tables">
+<h3>Relation entre les Tables<a class="headerlink" href="#relation-entre-les-tables" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Les tables sont reliées comme suit :</p>
+<ul class="simple">
+<li><p>La table <cite>Address</cite> est reliée à la table <cite>Letting</cite> via une relation OneToOne, où chaque location possède une adresse.</p></li>
+<li><p>La table <cite>Profile</cite> est reliée à la table <cite>User</cite> de Django via une relation OneToOne, où chaque utilisateur possède un profil.</p></li>
+</ul>
+</section>
+</section>
+<section id="guide-d-utilisation-cas-d-utilisation">
+<h2>6. Guide d’Utilisation (Cas d’Utilisation)<a class="headerlink" href="#guide-d-utilisation-cas-d-utilisation" title="Lien permanent vers cette rubrique">¶</a></h2>
+<ul>
+<li><p><strong>Cas d’Utilisation 1: Naviguer sur la Page d’Accueil</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Visiteur</p>
+<p><strong>But:</strong> Accéder aux sections principales du site.</p>
+<p><strong>Préconditions:</strong> Le visiteur a accédé au site web.</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>Le visiteur peut cliquer sur le lien « Profiles » pour voir la liste des profils.</p></li>
+<li><p>Le visiteur peut cliquer sur le lien « Lettings » pour voir les offres de location.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Le visiteur a accès aux sections principales du site.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 2: Voir les Profils</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Visiteur</p>
+<p><strong>But:</strong> Voir la liste des profils disponibles sur le site.</p>
+<p><strong>Préconditions:</strong> Le visiteur est sur la page « Profiles ».</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>Le visiteur peut cliquer sur un nom de profil pour voir les détails.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Le visiteur peut voir la liste des profils et accéder aux détails de chacun.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 3: Voir les Lettings (Locations)</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Visiteur</p>
+<p><strong>But:</strong> Voir la liste des locations disponibles sur le site.</p>
+<p><strong>Préconditions:</strong> Le visiteur est sur la page « Lettings ».</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>Le visiteur peut cliquer sur un nom de location pour voir les détails.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Le visiteur peut voir la liste des locations et accéder aux détails de chacun.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 4: Navigation entre les Pages</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Visiteur</p>
+<p><strong>But:</strong> Permettre une navigation facile entre différentes sections du site.</p>
+<p><strong>Préconditions:</strong> Le visiteur est sur l’une des pages du site.</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>Le visiteur peut naviguer entre la page d’accueil, la page de profil et la page de lettings en utilisant les boutons ou liens correspondants.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Le visiteur a accédé à la page souhaitée.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 5: Connexion à l’Espace Administrateur</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Administrateur</p>
+<p><strong>But:</strong> Permettre à l’administrateur de s’authentifier et d’accéder à l’espace d’administration.</p>
+<p><strong>Préconditions:</strong></p>
+<ul class="simple">
+<li><p>L’administrateur a un compte valide avec des privilèges d’administration.</p></li>
+</ul>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>L’administrateur ouvre la page de connexion.</p></li>
+<li><p>L’administrateur saisit son nom d’utilisateur et son mot de passe.</p></li>
+<li><p>L’administrateur clique sur le bouton « Connexion ».</p></li>
+<li><p>Le système valide les informations d’identification et accorde l’accès à l’espace d’administration si elles sont correctes.</p></li>
+</ul>
+<p><strong>Déroulement alternatif :</strong> Suppression de l’accès à un administrateur</p>
+<ul class="simple">
+<li><p>Un super-administrateur ouvre la page de gestion des administrateurs.</p></li>
+<li><p>Il sélectionne un administrateur spécifique.</p></li>
+<li><p>Il clique sur le bouton « Supprimer » pour révoquer les privilèges d’administration de cet administrateur.</p></li>
+</ul>
+<p><strong>Postconditions:</strong></p>
+<ul class="simple">
+<li><p>Si la connexion réussit, l’administrateur est connecté et a accès aux fonctionnalités d’administration.</p></li>
+<li><p>Si la suppression réussit, l’administrateur sélectionné n’a plus accès à l’espace d’administration.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 6: Gestion des Utilisateurs</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Administrateur</p>
+<p><strong>But:</strong> Permettre à l’administrateur d’ajouter, modifier, visualiser et supprimer les utilisateurs.</p>
+<p><strong>Préconditions:</strong> L’administrateur est connecté à la page d’administration.</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>L’administrateur peut cliquer sur « Users » pour visualiser la liste des utilisateurs.</p></li>
+<li><p>L’administrateur peut cliquer sur « Add » pour ajouter un nouvel utilisateur.</p></li>
+<li><p>L’administrateur peut cliquer sur « Change » pour modifier un utilisateur existant.</p></li>
+<li><p>L’administrateur peut cliquer sur « Delete » pour supprimer un utilisateur existant.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Les modifications souhaitées sont apportées aux utilisateurs.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 7: Gestion des Adresses</strong></p>
+<blockquote>
+<div><p>Acteur: Administrateur</p>
+<p><strong>But:</strong> Permettre à l’administrateur d’ajouter, modifier, visualiser et supprimer les adresses.</p>
+<p><strong>Préconditions:</strong> L’administrateur est connecté à la page d’administration.</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>L’administrateur peut cliquer sur « Addresses » pour visualiser la liste des adresses.</p></li>
+<li><p>L’administrateur peut cliquer sur « Add » pour ajouter une nouvelle adresse.</p></li>
+<li><p>L’administrateur peut cliquer sur « Change » pour modifier une adresse existante.</p></li>
+<li><p>L’administrateur peut cliquer sur « Delete » pour supprimer une adresse existante.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Les modifications souhaitées sont apportées aux adresses.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 8: Gestion des Profils</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Administrateur</p>
+<p><strong>But:</strong> Permettre à l’administrateur d’ajouter, modifier, visualiser et supprimer les profils.</p>
+<p><strong>Préconditions:</strong> L’administrateur est connecté à la page d’administration.</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>L’administrateur peut cliquer sur « Profiles » pour visualiser la liste des profils.</p></li>
+<li><p>L’administrateur peut cliquer sur « Add » pour ajouter un nouveau profil.</p></li>
+<li><p>L’administrateur peut cliquer sur « Change » pour modifier un profil existant.</p></li>
+<li><p>L’administrateur peut cliquer sur « Delete » pour supprimer un profil existant.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Les modifications souhaitées sont apportées aux profils.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cas d’Utilisation 9: Gestion des Locations (Lettings)</strong></p>
+<blockquote>
+<div><p><strong>Acteur:</strong> Administrateur</p>
+<p><strong>But:</strong> Permettre à l’administrateur d’ajouter, modifier, visualiser et supprimer les locations.</p>
+<p><strong>Préconditions:</strong> L’administrateur est connecté à la page d’administration.</p>
+<p><strong>Déroulement principal:</strong></p>
+<ul class="simple">
+<li><p>L’administrateur peut cliquer sur « Lettings » pour visualiser la liste des locations.</p></li>
+<li><p>L’administrateur peut cliquer sur « Add » pour ajouter une nouvelle location.</p></li>
+<li><p>L’administrateur peut cliquer sur « Change » pour modifier une location existante.</p></li>
+<li><p>L’administrateur peut cliquer sur « Delete » pour supprimer une location existante.</p></li>
+</ul>
+<p><strong>Postconditions:</strong> Les modifications souhaitées sont apportées aux locations.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="procedures-de-deploiement">
+<h2>7. Procédures de déploiement<a class="headerlink" href="#procedures-de-deploiement" title="Lien permanent vers cette rubrique">¶</a></h2>
+<section id="recapitulatif-du-fonctionnement-du-deploiement">
+<h3>Récapitulatif du fonctionnement du déploiement<a class="headerlink" href="#recapitulatif-du-fonctionnement-du-deploiement" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Le déploiement est effectué à l’aide d’un pipeline CI/CD, orchestré avec CircleCI, qui teste, conteneurise et déploie l’application sur AWS. Le pipeline inclut des étapes pour la vérification du style de code, l’exécution de tests unitaires, la construction d’images Docker, le push des images vers AWS ECR et Docker Hub, et le déploiement sur AWS Elastic Beanstalk.</p>
+</section>
+<section id="configuration-requise">
+<h3>Configuration requise<a class="headerlink" href="#configuration-requise" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Assurez-vous que les variables d’environnement suivantes sont configurées dans CircleCI:</p>
+<ul class="simple">
+<li><p>SECRET_KEY</p></li>
+<li><p>SENTRY_DSN</p></li>
+<li><p>AWS_ACCESS_KEY_ID</p></li>
+<li><p>AWS_SECRET_ACCESS_KEY</p></li>
+<li><p>DJANGO_DEBUG</p></li>
+<li><p>AWS_REGION</p></li>
+<li><p>DOCKERHUB_USERNAME</p></li>
+<li><p>DOCKERHUB_PASSWORD</p></li>
+<li><p>APP_AWS</p></li>
+<li><p>APP_ENVIRONNEMENT_AWS</p></li>
+<li><p>S3_BUCKET_DOCKRUN</p></li>
+<li><p>DOCKERRUN</p></li>
+</ul>
+</section>
+<section id="etapes-necessaires-pour-effectuer-le-deploiement">
+<h3>Étapes nécessaires pour effectuer le déploiement<a class="headerlink" href="#etapes-necessaires-pour-effectuer-le-deploiement" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p><strong>À noter:</strong></p>
+<p>La phase de déploiement sera executée uniquement lors d’un « push » github vers la branche principale.</p>
+<p>Lors d’un push github sur une branche secondaire seul la phase de tests de conformité PEP8 et de tests unitaires sera executée.</p>
+<ul class="simple">
+<li><p><strong>Tests effectué sur toutes les branches:</strong></p></li>
+</ul>
+<p>Exécution de tests de conformité PEP8 et de tests unitaires.</p>
+<ul>
+<li><p><strong>Conteneurisation et déploiement:</strong> ( uniquement effectué sur la branche principale )</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Construction de l’image Docker avec les variables de build.</p></li>
+<li><p>Marquage et push de l’image vers AWS ECR et Docker Hub.</p></li>
+<li><p>Synchronisation des fichiers statiques avec S3.</p></li>
+<li><p>Déploiement de l’application sur Elastic Beanstalk.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml).</p>
+<p>Aucune intervention manuelle n’est nécessaire si les configurations sont correctement définies.</p>
+</section>
+<section id="executer-l-image-docker-en-local">
+<h3>Exécuter l’image Docker en local<a class="headerlink" href="#executer-l-image-docker-en-local" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Pour exécuter l’image Docker de ce projet localement, vous pouvez utiliser le script <code class="docutils literal notranslate"><span class="pre">run_container.sh</span></code> fourni. Voici les étapes à suivre:</p>
+<ol class="arabic">
+<li><p><strong>Configuration des variables d’environnement</strong></p>
+<ul class="simple">
+<li><p>SENTRY_DSN=your-sentry-dsn</p></li>
+<li><p>AWS_ACCESS_KEY_ID=your-access-key-id</p></li>
+<li><p>AWS_SECRET_ACCESS_KEY=your-secret-access-key</p></li>
+<li><p>AWS_STORAGE_BUCKET_NAME=your-storage-bucket-name</p></li>
+<li><p>DJANGO_DEBUG=True-or-False</p></li>
+</ul>
+</li>
+<li><p><strong>Rendre le script exécutable</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">run_container.sh</span></code></p>
+</li>
+<li><p><strong>Exécution du script</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_container.sh</span></code></p>
+<p>Ce script effectue les actions suivantes :</p>
+<ul class="simple">
+<li><p>Se connecte à Docker Hub en utilisant vos identifiants.</p></li>
+<li><p>Télécharge l’image Docker la plus récente du registre Docker Hub.</p></li>
+<li><p>Lance l’image en tant que conteneur avec les variables d’environnement spécifiées et expose le port 8000.</p></li>
+</ul>
+</li>
+<li><p><strong>Accéder à l’application</strong></p>
+<p>Une fois le conteneur lancé, vous pouvez accéder à l’application en ouvrant votre navigateur web et en allant à <a class="reference external" href="http://localhost:8000">http://localhost:8000</a>.</p>
+<p>Assurez-vous d’avoir Docker installé sur votre système et que vous êtes connecté à Internet pour pouvoir télécharger l’image depuis Docker Hub.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="surveillance-et-gestion-des-erreurs-avec-sentry">
+<h2>8. Surveillance et Gestion des Erreurs avec Sentry<a class="headerlink" href="#surveillance-et-gestion-des-erreurs-avec-sentry" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Notre application utilise Sentry pour surveiller et gérer les erreurs.</p>
+<p>Sentry aide à capturer et signaler les exceptions en temps réel, permettant une réponse rapide et une résolution des problèmes.</p>
+<section id="configuration-dans-settings-py">
+<h3>Configuration dans <code class="docutils literal notranslate"><span class="pre">settings.py</span></code><a class="headerlink" href="#configuration-dans-settings-py" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>La configuration de Sentry dans notre application est définie dans le fichier <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>.</p>
+<p>Sentry a été configuré pour capturer les messages de niveau <code class="docutils literal notranslate"><span class="pre">INFO</span></code> et les erreurs de niveau <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>. Voici un aperçu de la configuration :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sentry_logging</span> <span class="o">=</span> <span class="n">LoggingIntegration</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">event_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span>
+<span class="p">)</span>
+
+<span class="n">sentry_sdk</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+    <span class="n">dsn</span><span class="o">=</span><span class="n">SENTRY_DSN</span><span class="p">,</span>
+    <span class="n">integrations</span><span class="o">=</span><span class="p">[</span><span class="n">DjangoIntegration</span><span class="p">(),</span> <span class="n">sentry_logging</span><span class="p">],</span>
+    <span class="n">traces_sample_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">send_default_pii</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="integration-dans-les-vues-de-l-application">
+<h3>Intégration dans les Vues de l’Application<a class="headerlink" href="#integration-dans-les-vues-de-l-application" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Sentry est utilisé dans les modules suivants de notre application :</p>
+<section id="app-lettings">
+<h4>App Lettings<a class="headerlink" href="#app-lettings" title="Lien permanent vers cette rubrique">¶</a></h4>
+<p>Ce module gère les locations et contient des vues pour lister toutes les locations et afficher les détails d’une location individuelle. Sentry est utilisé pour logger les erreurs lors de la récupération des locations.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index(request)</span></code>: Log les erreurs lors de la récupération de la liste des locations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">letting(request,</span> <span class="pre">letting_id)</span></code>: Log les erreurs lors de la récupération des détails d’une location spécifique.</p></li>
+</ul>
+</section>
+<section id="app-profiles">
+<h4>App Profiles<a class="headerlink" href="#app-profiles" title="Lien permanent vers cette rubrique">¶</a></h4>
+<p>Ce module gère les profils des utilisateurs. Sentry est utilisé pour logger les erreurs lors de la récupération des profils.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index(request)</span></code>: Log les erreurs lors de la récupération de la liste des profils.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">profile(request,</span> <span class="pre">username)</span></code>: Log les erreurs lors de la récupération d’un profil spécifique.</p></li>
+</ul>
+</section>
+<section id="vues-de-oc-lettings-site">
+<h4>Vues de <code class="docutils literal notranslate"><span class="pre">oc_lettings_site</span></code><a class="headerlink" href="#vues-de-oc-lettings-site" title="Lien permanent vers cette rubrique">¶</a></h4>
+<p>Ce module gère les vues principales de l’application, y compris les erreurs 404 et 500.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">custom_page_not_found_view(request,</span> <span class="pre">exception=None)</span></code>: Log les erreurs 404.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom_internal_server_error_view(request)</span></code>: Log les erreurs 500.</p></li>
+</ul>
+<section id="conclusion">
+<h5>Conclusion<a class="headerlink" href="#conclusion" title="Lien permanent vers cette rubrique">¶</a></h5>
+<p>L’intégration de Sentry dans notre application Django permet une surveillance continue des erreurs et des exceptions. Cela facilite la détection rapide des problèmes et aide l’équipe de développement à maintenir la stabilité et la qualité de l’application.</p>
+</section>
+</section>
+</section>
+</section>
 </section>
 
 
