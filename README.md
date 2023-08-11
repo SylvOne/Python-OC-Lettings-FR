@@ -126,3 +126,48 @@ La phase de déploiement sera executée uniquement lors d'un "push" github vers 
    - Déploiement de l'application sur Elastic Beanstalk.
 
 Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml). Aucune intervention manuelle n'est nécessaire si les configurations sont correctement définies.
+
+### Exécuter l'image Docker en local
+
+Pour exécuter l'image Docker de ce projet localement, vous pouvez utiliser le script `run_container.sh` fourni. Voici les étapes à suivre :
+
+#### Configuration des variables d'environnement
+Assurez-vous que le fichier `.env` contient les variables d'environnement correctes. Voici un exemple des variables nécessaires :
+```
+DOCKERHUB_USERNAME=your-username
+DOCKERHUB_PASSWORD=your-password
+SECRET_KEY=your-secret-key
+SENTRY_DSN=your-sentry-dsn
+AWS_ACCESS_KEY_ID=your-access-key-id
+AWS_SECRET_ACCESS_KEY=your-secret-access-key
+AWS_STORAGE_BUCKET_NAME=your-storage-bucket-name
+DJANGO_DEBUG=True-or-False
+```
+
+#### Rendre le script exécutable
+
+Dans votre terminal, naviguez jusqu'au répertoire où se trouve le fichier run_container.sh et exécutez la commande suivante pour le rendre exécutable :
+
+```
+chmod +x run_container.sh
+```
+
+#### Exécution du script
+
+Lancez le script avec la commande suivante :
+
+```
+./run_container.sh
+```
+
+Ce script effectue les actions suivantes :
+
+* Se connecte à Docker Hub en utilisant vos identifiants.
+* Télécharge l'image Docker la plus récente du registre Docker Hub.
+* Lance l'image en tant que conteneur avec les variables d'environnement spécifiées et expose le port 8000.
+
+#### Accéder à l'application
+
+Une fois le conteneur lancé, vous pouvez accéder à l'application en ouvrant votre navigateur web et en allant à http://localhost:8000.
+
+Assurez-vous d'avoir Docker installé sur votre système et que vous êtes connecté à Internet pour pouvoir télécharger l'image depuis Docker Hub.
