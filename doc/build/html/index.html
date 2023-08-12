@@ -34,8 +34,8 @@
 <h1>Site web d’Orange County Lettings<a class="headerlink" href="#site-web-d-orange-county-lettings" title="Lien permanent vers cette rubrique">¶</a></h1>
 <section id="description-du-projet">
 <h2>1. Description du Projet<a class="headerlink" href="#description-du-projet" title="Lien permanent vers cette rubrique">¶</a></h2>
-<p>Projet: Site web d’Orange County Lettings
-Le projet a pour but de créer une plateforme de location pour Orange County. Il utilise des technologies telles que Python, SQLite3, et Django, et suit les principes de développement CI/CD.</p>
+<p>Projet: Site web d’Orange County Lettings.</p>
+<p>Le projet a pour but de créer une plateforme de location pour Orange County Lettings. Il utilise des technologies telles que Python, SQLite3, et Django, et suit les principes de développement CI/CD.</p>
 </section>
 <section id="instructions-sur-linstallation-du-projet">
 <h2>2. Instructions sur l’Installation du Projet<a class="headerlink" href="#instructions-sur-linstallation-du-projet" title="Lien permanent vers cette rubrique">¶</a></h2>
@@ -298,8 +298,137 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </li>
 </ul>
 </section>
+<section id="interfaces-de-programmation-des-applications-lettings-et-profiles">
+<h2>7. Interfaces de Programmation des Applications Lettings et Profiles<a class="headerlink" href="#interfaces-de-programmation-des-applications-lettings-et-profiles" title="Lien permanent vers cette rubrique">¶</a></h2>
+<section id="id1">
+<h3>Application : Lettings<a class="headerlink" href="#id1" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>L’application « lettings » gère tout ce qui concerne les locations.</p>
+<section id="modeles">
+<h4>Modèles<a class="headerlink" href="#modeles" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>Address:</dt><dd><ul class="simple">
+<li><p><strong>Champs</strong>: number, street, city, state, zip_code, country_iso_code.</p></li>
+<li><p><strong>Relations</strong>: Aucune.</p></li>
+<li><p><strong>Description</strong>: Utilisé pour stocker les adresses des locations.</p></li>
+</ul>
+</dd>
+<dt>Letting:</dt><dd><ul class="simple">
+<li><p><strong>Champs</strong>: title, address.</p></li>
+<li><p><strong>Relations</strong>: Relié à Address par une relation OneToOneField.</p></li>
+<li><p><strong>Description</strong>: Utilisé pour représenter une location immobilière.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="vues">
+<h4>Vues<a class="headerlink" href="#vues" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>index</strong>: Affiche une liste des locations.</p></li>
+<li><p><strong>letting</strong>: Affiche les détails d’une location spécifique.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="urls">
+<h4>Urls<a class="headerlink" href="#urls" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>lettings_index</strong>: Chemin vers l’index des locations.</p></li>
+<li><p><strong>letting</strong>: Chemin vers la vue de détail d’une location individuelle.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="admin">
+<h4>Admin<a class="headerlink" href="#admin" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Address</strong>: Les administrateurs peuvent créer, modifier, supprimer des adresses.</p></li>
+<li><p><strong>Letting</strong>: Les administrateurs peuvent créer, modifier, supprimer des locations.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="id2">
+<h3>Application : Profiles<a class="headerlink" href="#id2" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>L’application « profiles » gère tout ce qui concerne les profils des utilisateurs.</p>
+<section id="id3">
+<h4>Modèles<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>Profile:</dt><dd><ul class="simple">
+<li><p><strong>Champs</strong>: user, favorite_city.</p></li>
+<li><p><strong>Relations</strong>: Lié à l’objet User de Django par une relation OneToOne.</p></li>
+<li><p><strong>Description</strong>: Représente le profil d’un utilisateur.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id4">
+<h4>Vues<a class="headerlink" href="#id4" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>index</strong>: Vue pour lister tous les profils d’utilisateurs.</p></li>
+<li><p><strong>profile</strong>: Vue pour afficher un profil spécifique.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id5">
+<h4>Urls<a class="headerlink" href="#id5" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>profiles_index</strong>: Chemin vers l’index des profils d’utilisateurs.</p></li>
+<li><p><strong>profile</strong>: Chemin vers la vue de détail d’un profil individuel.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id6">
+<h4>Admin<a class="headerlink" href="#id6" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Profile</strong>: Les administrateurs peuvent créer, modifier, supprimer des profils.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="repertoire-principal-oc-lettings-site">
+<h3>Répertoire Principal : oc_lettings_site<a class="headerlink" href="#repertoire-principal-oc-lettings-site" title="Lien permanent vers cette rubrique">¶</a></h3>
+<section id="id7">
+<h4>Vues<a class="headerlink" href="#id7" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>index</strong>: Vue pour rendre la page d’index.</p></li>
+<li><p><strong>custom_page_not_found_view</strong>: Vue personnalisée pour gérer les erreurs 404 (Page non trouvée).</p></li>
+<li><p><strong>custom_internal_server_error_view</strong>: Vue personnalisée pour gérer les erreurs 500 (Erreur interne du serveur).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id8">
+<h4>Urls<a class="headerlink" href="#id8" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>index</strong>: La page d’accueil du site.</p></li>
+<li><p><strong>lettings</strong>: Les chemins URL associés aux annonces immobilières.</p></li>
+<li><p><strong>profiles</strong>: Les chemins URL associés aux profils des utilisateurs.</p></li>
+<li><p><strong>admin</strong>: L’interface d’administration de Django.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="gestionnaires-d-erreur">
+<h4>Gestionnaires d’Erreur<a class="headerlink" href="#gestionnaires-d-erreur" title="Lien permanent vers cette rubrique">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>handler404</strong>: Gestion des erreurs 404 (Page non trouvée).</p></li>
+<li><p><strong>handler500</strong>: Gestion des erreurs 500 (Erreur interne du serveur).</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+</section>
 <section id="procedures-de-deploiement">
-<h2>7. Procédures de déploiement<a class="headerlink" href="#procedures-de-deploiement" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>8. Procédures de déploiement<a class="headerlink" href="#procedures-de-deploiement" title="Lien permanent vers cette rubrique">¶</a></h2>
 <section id="recapitulatif-du-fonctionnement-du-deploiement">
 <h3>Récapitulatif du fonctionnement du déploiement<a class="headerlink" href="#recapitulatif-du-fonctionnement-du-deploiement" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Le déploiement est effectué à l’aide d’un pipeline CI/CD, orchestré avec CircleCI, qui teste, conteneurise et déploie l’application sur AWS. Le pipeline inclut des étapes pour la vérification du style de code, l’exécution de tests unitaires, la construction d’images Docker, le push des images vers AWS ECR et Docker Hub, et le déploiement sur AWS Elastic Beanstalk.</p>
@@ -327,11 +456,12 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <p><strong>À noter:</strong></p>
 <p>La phase de déploiement sera executée uniquement lors d’un « push » github vers la branche principale.</p>
 <p>Lors d’un push github sur une branche secondaire seul la phase de tests de conformité PEP8 et de tests unitaires sera executée.</p>
-<ul class="simple">
-<li><p><strong>Tests effectué sur toutes les branches:</strong></p></li>
-</ul>
-<p>Exécution de tests de conformité PEP8 et de tests unitaires.</p>
 <ul>
+<li><p><strong>Tests effectué sur toutes les branches:</strong></p>
+<blockquote>
+<div><p>Exécution de tests de conformité PEP8 et de tests unitaires.</p>
+</div></blockquote>
+</li>
 <li><p><strong>Conteneurisation et déploiement:</strong> ( uniquement effectué sur la branche principale )</p>
 <blockquote>
 <div><ul class="simple">
@@ -340,11 +470,11 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <li><p>Synchronisation des fichiers statiques avec S3.</p></li>
 <li><p>Déploiement de l’application sur Elastic Beanstalk.</p></li>
 </ul>
+<p>Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml).</p>
+<p>Aucune intervention manuelle n’est nécessaire si les configurations sont correctement définies.</p>
 </div></blockquote>
 </li>
 </ul>
-<p>Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml).</p>
-<p>Aucune intervention manuelle n’est nécessaire si les configurations sont correctement définies.</p>
 </section>
 <section id="executer-l-image-docker-en-local">
 <h3>Exécuter l’image Docker en local<a class="headerlink" href="#executer-l-image-docker-en-local" title="Lien permanent vers cette rubrique">¶</a></h3>
@@ -379,7 +509,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </section>
 </section>
 <section id="surveillance-et-gestion-des-erreurs-avec-sentry">
-<h2>8. Surveillance et Gestion des Erreurs avec Sentry<a class="headerlink" href="#surveillance-et-gestion-des-erreurs-avec-sentry" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>9. Surveillance et Gestion des Erreurs avec Sentry<a class="headerlink" href="#surveillance-et-gestion-des-erreurs-avec-sentry" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>Notre application utilise Sentry pour surveiller et gérer les erreurs.</p>
 <p>Sentry aide à capturer et signaler les exceptions en temps réel, permettant une réponse rapide et une résolution des problèmes.</p>
 <section id="configuration-dans-settings-py">
@@ -403,8 +533,9 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <section id="integration-dans-les-vues-de-l-application">
 <h3>Intégration dans les Vues de l’Application<a class="headerlink" href="#integration-dans-les-vues-de-l-application" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Sentry est utilisé dans les modules suivants de notre application :</p>
+</section>
 <section id="app-lettings">
-<h4>App Lettings<a class="headerlink" href="#app-lettings" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h3>App Lettings<a class="headerlink" href="#app-lettings" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Ce module gère les locations et contient des vues pour lister toutes les locations et afficher les détails d’une location individuelle. Sentry est utilisé pour logger les erreurs lors de la récupération des locations.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">index(request)</span></code>: Log les erreurs lors de la récupération de la liste des locations.</p></li>
@@ -412,7 +543,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </ul>
 </section>
 <section id="app-profiles">
-<h4>App Profiles<a class="headerlink" href="#app-profiles" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h3>App Profiles<a class="headerlink" href="#app-profiles" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Ce module gère les profils des utilisateurs. Sentry est utilisé pour logger les erreurs lors de la récupération des profils.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">index(request)</span></code>: Log les erreurs lors de la récupération de la liste des profils.</p></li>
@@ -420,17 +551,16 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </ul>
 </section>
 <section id="vues-de-oc-lettings-site">
-<h4>Vues de <code class="docutils literal notranslate"><span class="pre">oc_lettings_site</span></code><a class="headerlink" href="#vues-de-oc-lettings-site" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h3>Vues de <code class="docutils literal notranslate"><span class="pre">oc_lettings_site</span></code><a class="headerlink" href="#vues-de-oc-lettings-site" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Ce module gère les vues principales de l’application, y compris les erreurs 404 et 500.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">custom_page_not_found_view(request,</span> <span class="pre">exception=None)</span></code>: Log les erreurs 404.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">custom_internal_server_error_view(request)</span></code>: Log les erreurs 500.</p></li>
 </ul>
+</section>
 <section id="conclusion">
-<h5>Conclusion<a class="headerlink" href="#conclusion" title="Lien permanent vers cette rubrique">¶</a></h5>
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>L’intégration de Sentry dans notre application Django permet une surveillance continue des erreurs et des exceptions. Cela facilite la détection rapide des problèmes et aide l’équipe de développement à maintenir la stabilité et la qualité de l’application.</p>
-</section>
-</section>
 </section>
 </section>
 </section>

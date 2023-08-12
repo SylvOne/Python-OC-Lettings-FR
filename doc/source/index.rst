@@ -10,8 +10,9 @@ Site web d'Orange County Lettings
 1. Description du Projet
 ========================
 
-Projet: Site web d'Orange County Lettings
-Le projet a pour but de créer une plateforme de location pour Orange County. Il utilise des technologies telles que Python, SQLite3, et Django, et suit les principes de développement CI/CD.
+Projet: Site web d'Orange County Lettings.
+
+Le projet a pour but de créer une plateforme de location pour Orange County Lettings. Il utilise des technologies telles que Python, SQLite3, et Django, et suit les principes de développement CI/CD.
 
 2. Instructions sur l’Installation du Projet
 =============================================
@@ -311,7 +312,105 @@ Les tables sont reliées comme suit :
    **Postconditions:** Les modifications souhaitées sont apportées aux locations.
 
 
-7. Procédures de déploiement
+
+7. Interfaces de Programmation des Applications Lettings et Profiles
+====================================================================
+
+Application : Lettings
+'''''''''''''''''''''''
+
+L'application "lettings" gère tout ce qui concerne les locations.
+
+Modèles
+^^^^^^^
+
+   Address:
+      - **Champs**: number, street, city, state, zip_code, country_iso_code.
+      - **Relations**: Aucune.
+      - **Description**: Utilisé pour stocker les adresses des locations.
+
+   Letting:
+      - **Champs**: title, address.
+      - **Relations**: Relié à Address par une relation OneToOneField.
+      - **Description**: Utilisé pour représenter une location immobilière.
+
+Vues
+^^^^
+
+   - **index**: Affiche une liste des locations.
+   - **letting**: Affiche les détails d'une location spécifique.
+
+Urls
+^^^^
+
+   - **lettings_index**: Chemin vers l'index des locations.
+   - **letting**: Chemin vers la vue de détail d'une location individuelle.
+
+Admin
+^^^^^
+
+   - **Address**: Les administrateurs peuvent créer, modifier, supprimer des adresses.
+   - **Letting**: Les administrateurs peuvent créer, modifier, supprimer des locations.
+
+
+
+Application : Profiles
+'''''''''''''''''''''''
+
+L'application "profiles" gère tout ce qui concerne les profils des utilisateurs.
+
+Modèles
+^^^^^^^
+
+   Profile:
+      - **Champs**: user, favorite_city.
+      - **Relations**: Lié à l'objet User de Django par une relation OneToOne.
+      - **Description**: Représente le profil d'un utilisateur.
+
+Vues
+^^^^
+
+   - **index**: Vue pour lister tous les profils d'utilisateurs.
+   - **profile**: Vue pour afficher un profil spécifique.
+
+Urls
+^^^^
+   - **profiles_index**: Chemin vers l'index des profils d'utilisateurs.
+   - **profile**: Chemin vers la vue de détail d'un profil individuel.
+
+Admin
+^^^^^
+
+   - **Profile**: Les administrateurs peuvent créer, modifier, supprimer des profils.
+
+
+
+Répertoire Principal : oc_lettings_site
+'''''''''''''''''''''''''''''''''''''''
+
+Vues
+^^^^
+
+   - **index**: Vue pour rendre la page d'index.
+   - **custom_page_not_found_view**: Vue personnalisée pour gérer les erreurs 404 (Page non trouvée).
+   - **custom_internal_server_error_view**: Vue personnalisée pour gérer les erreurs 500 (Erreur interne du serveur).
+
+Urls
+^^^^
+
+   - **index**: La page d'accueil du site.
+   - **lettings**: Les chemins URL associés aux annonces immobilières.
+   - **profiles**: Les chemins URL associés aux profils des utilisateurs.
+   - **admin**: L'interface d'administration de Django.
+
+Gestionnaires d'Erreur
+^^^^^^^^^^^^^^^^^^^^^^
+
+   - **handler404**: Gestion des erreurs 404 (Page non trouvée).
+   - **handler500**: Gestion des erreurs 500 (Erreur interne du serveur).
+
+
+8. Procédures de déploiement
 ============================
 
 Récapitulatif du fonctionnement du déploiement
@@ -346,7 +445,7 @@ Lors d'un push github sur une branche secondaire seul la phase de tests de confo
 
 - **Tests effectué sur toutes les branches:** 
 
-Exécution de tests de conformité PEP8 et de tests unitaires.
+   Exécution de tests de conformité PEP8 et de tests unitaires.
 
 - **Conteneurisation et déploiement:** ( uniquement effectué sur la branche principale )
 
@@ -355,9 +454,9 @@ Exécution de tests de conformité PEP8 et de tests unitaires.
    - Synchronisation des fichiers statiques avec S3.
    - Déploiement de l'application sur Elastic Beanstalk.
 
-Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml).
+   Ces étapes sont automatiquement gérées par le fichier de configuration CircleCI (config.yml).
 
-Aucune intervention manuelle n'est nécessaire si les configurations sont correctement définies.
+   Aucune intervention manuelle n'est nécessaire si les configurations sont correctement définies.
 
 
 Exécuter l'image Docker en local
@@ -393,7 +492,7 @@ Pour exécuter l'image Docker de ce projet localement, vous pouvez utiliser le s
    Assurez-vous d'avoir Docker installé sur votre système et que vous êtes connecté à Internet pour pouvoir télécharger l'image depuis Docker Hub.
 
 
-8. Surveillance et Gestion des Erreurs avec Sentry
+9. Surveillance et Gestion des Erreurs avec Sentry
 ==================================================
 
 Notre application utilise Sentry pour surveiller et gérer les erreurs.
@@ -428,7 +527,7 @@ Intégration dans les Vues de l'Application
 Sentry est utilisé dans les modules suivants de notre application :
 
 App Lettings
-~~~~~~~~~~~~
+'''''''''''''
 
 Ce module gère les locations et contient des vues pour lister toutes les locations et afficher les détails d'une location individuelle. Sentry est utilisé pour logger les erreurs lors de la récupération des locations.
 
@@ -436,7 +535,7 @@ Ce module gère les locations et contient des vues pour lister toutes les locati
 - ``letting(request, letting_id)``: Log les erreurs lors de la récupération des détails d'une location spécifique.
 
 App Profiles
-~~~~~~~~~~~~
+'''''''''''''
 
 Ce module gère les profils des utilisateurs. Sentry est utilisé pour logger les erreurs lors de la récupération des profils.
 
@@ -444,7 +543,7 @@ Ce module gère les profils des utilisateurs. Sentry est utilisé pour logger le
 - ``profile(request, username)``: Log les erreurs lors de la récupération d'un profil spécifique.
 
 Vues de ``oc_lettings_site``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+''''''''''''''''''''''''''''
 
 Ce module gère les vues principales de l'application, y compris les erreurs 404 et 500.
 
@@ -452,6 +551,6 @@ Ce module gère les vues principales de l'application, y compris les erreurs 404
 - ``custom_internal_server_error_view(request)``: Log les erreurs 500.
 
 Conclusion
-----------
+'''''''''''
 
 L'intégration de Sentry dans notre application Django permet une surveillance continue des erreurs et des exceptions. Cela facilite la détection rapide des problèmes et aide l'équipe de développement à maintenir la stabilité et la qualité de l'application.
