@@ -1,3 +1,8 @@
+"""
+Module de tests d'intégration pour l'application "Lettings".
+Ce test vérifie que les modèles, vues, et URLs fonctionnent bien ensemble.
+"""
+
 import pytest
 from django.urls import reverse
 from lettings.models import Address, Letting
@@ -5,6 +10,12 @@ from lettings.models import Address, Letting
 
 @pytest.mark.django_db
 def test_integration(client):
+    """
+    Teste l'intégration des composants de l'application "Lettings".
+    Vérifie que les adresses et les locations peuvent être créées,
+    et que les vues affichent les informations correctes.
+    """
+
     # Création des objets Address et Letting
     address = Address.objects.create(
         number=123,

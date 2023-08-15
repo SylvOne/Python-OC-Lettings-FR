@@ -3,7 +3,7 @@
 source .env
 
 # Connexion au registre Docker
-docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
+echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
 
 # Nom de l'image dans le registre
 IMAGE_NAME=$DOCKERHUB_USERNAME/oc_lettings:latest
@@ -20,4 +20,3 @@ docker run -p 8000:8000 \
   -e AWS_STORAGE_BUCKET_NAME=$AWS_STORAGE_BUCKET_NAME \
   -e DJANGO_DEBUG=$DJANGO_DEBUG \
   $IMAGE_NAME
-  
